@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+   id String @id @default(uuid())
+   name String
+   email String @unique
+   bi_number String
+   date_birth String 
+   address String
+   password String
+   status String
+   permitions Json
+   roles Json
+   applyemnt applyment[]
+}
+
+model schoolership {
+   id String @id @default(uuid())
+   name String
+   coutry String
+   start_at DateTime
+   end_at DateTime
+   status String
+   course course[]
+}
+
+model course {
+   id String @id @default(uuid())
+   name String 
+   vacancies String
+   schoolership schoolership @relation(fields: [schoolership_id],  references: [id])
+   schoolership_id String
+ ApplymentCourse applymentCourse[]
+}
+
+model applyment {
+   id String @id  @default(uuid())
+   number String
+   User user @relation(fields: [user_id], references: [id])
+   user_id String
+   ApplymentCourse applymentCourse[]
+}
+model applymentCourse {
+ id String @id @default(uuid())
+ Course course @relation(fields: [course_id], references: [id])
+ course_id String
+ applyment applyment @relation(fields: [applyment_id], references: [id])
+ applyment_id String
+}
+

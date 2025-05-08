@@ -24,7 +24,7 @@ export type user = $Result.DefaultSelection<Prisma.$userPayload>
  */
 export type schoolership = $Result.DefaultSelection<Prisma.$schoolershipPayload>
 /**
- * Model course 
+ * Model course
  * 
  */
 export type course = $Result.DefaultSelection<Prisma.$coursePayload>
@@ -3298,6 +3298,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     vacancies: string | null
+    status: string | null
     schoolership_id: string | null
   }
 
@@ -3305,6 +3306,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     vacancies: string | null
+    status: string | null
     schoolership_id: string | null
   }
 
@@ -3312,6 +3314,7 @@ export namespace Prisma {
     id: number
     name: number
     vacancies: number
+    status: number
     schoolership_id: number
     _all: number
   }
@@ -3321,6 +3324,7 @@ export namespace Prisma {
     id?: true
     name?: true
     vacancies?: true
+    status?: true
     schoolership_id?: true
   }
 
@@ -3328,6 +3332,7 @@ export namespace Prisma {
     id?: true
     name?: true
     vacancies?: true
+    status?: true
     schoolership_id?: true
   }
 
@@ -3335,6 +3340,7 @@ export namespace Prisma {
     id?: true
     name?: true
     vacancies?: true
+    status?: true
     schoolership_id?: true
     _all?: true
   }
@@ -3415,6 +3421,7 @@ export namespace Prisma {
     id: string
     name: string
     vacancies: string
+    status: string
     schoolership_id: string
     _count: CourseCountAggregateOutputType | null
     _min: CourseMinAggregateOutputType | null
@@ -3439,6 +3446,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     vacancies?: boolean
+    status?: boolean
     schoolership_id?: boolean
     schoolership?: boolean | schoolershipDefaultArgs<ExtArgs>
     ApplymentCourse?: boolean | course$ApplymentCourseArgs<ExtArgs>
@@ -3451,10 +3459,11 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     vacancies?: boolean
+    status?: boolean
     schoolership_id?: boolean
   }
 
-  export type courseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "vacancies" | "schoolership_id", ExtArgs["result"]["course"]>
+  export type courseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "vacancies" | "status" | "schoolership_id", ExtArgs["result"]["course"]>
   export type courseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolership?: boolean | schoolershipDefaultArgs<ExtArgs>
     ApplymentCourse?: boolean | course$ApplymentCourseArgs<ExtArgs>
@@ -3471,6 +3480,7 @@ export namespace Prisma {
       id: string
       name: string
       vacancies: string
+      status: string
       schoolership_id: string
     }, ExtArgs["result"]["course"]>
     composites: {}
@@ -3846,6 +3856,7 @@ export namespace Prisma {
     readonly id: FieldRef<"course", 'String'>
     readonly name: FieldRef<"course", 'String'>
     readonly vacancies: FieldRef<"course", 'String'>
+    readonly status: FieldRef<"course", 'String'>
     readonly schoolership_id: FieldRef<"course", 'String'>
   }
     
@@ -6126,6 +6137,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     vacancies: 'vacancies',
+    status: 'status',
     schoolership_id: 'schoolership_id'
   };
 
@@ -6210,6 +6222,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     vacancies: 'vacancies',
+    status: 'status',
     schoolership_id: 'schoolership_id'
   };
 
@@ -6426,6 +6439,7 @@ export namespace Prisma {
     id?: StringFilter<"course"> | string
     name?: StringFilter<"course"> | string
     vacancies?: StringFilter<"course"> | string
+    status?: StringFilter<"course"> | string
     schoolership_id?: StringFilter<"course"> | string
     schoolership?: XOR<SchoolershipScalarRelationFilter, schoolershipWhereInput>
     ApplymentCourse?: ApplymentCourseListRelationFilter
@@ -6435,6 +6449,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     vacancies?: SortOrder
+    status?: SortOrder
     schoolership_id?: SortOrder
     schoolership?: schoolershipOrderByWithRelationInput
     ApplymentCourse?: applymentCourseOrderByRelationAggregateInput
@@ -6448,6 +6463,7 @@ export namespace Prisma {
     NOT?: courseWhereInput | courseWhereInput[]
     name?: StringFilter<"course"> | string
     vacancies?: StringFilter<"course"> | string
+    status?: StringFilter<"course"> | string
     schoolership_id?: StringFilter<"course"> | string
     schoolership?: XOR<SchoolershipScalarRelationFilter, schoolershipWhereInput>
     ApplymentCourse?: ApplymentCourseListRelationFilter
@@ -6457,6 +6473,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     vacancies?: SortOrder
+    status?: SortOrder
     schoolership_id?: SortOrder
     _count?: courseCountOrderByAggregateInput
     _max?: courseMaxOrderByAggregateInput
@@ -6470,6 +6487,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"course"> | string
     name?: StringWithAggregatesFilter<"course"> | string
     vacancies?: StringWithAggregatesFilter<"course"> | string
+    status?: StringWithAggregatesFilter<"course"> | string
     schoolership_id?: StringWithAggregatesFilter<"course"> | string
   }
 
@@ -6495,14 +6513,14 @@ export namespace Prisma {
 
   export type applymentWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    number?: string
     AND?: applymentWhereInput | applymentWhereInput[]
     OR?: applymentWhereInput[]
     NOT?: applymentWhereInput | applymentWhereInput[]
-    number?: StringFilter<"applyment"> | string
     user_id?: StringFilter<"applyment"> | string
     User?: XOR<UserScalarRelationFilter, userWhereInput>
     ApplymentCourse?: ApplymentCourseListRelationFilter
-  }, "id">
+  }, "id" | "number">
 
   export type applymentOrderByWithAggregationInput = {
     id?: SortOrder
@@ -6737,6 +6755,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     schoolership: schoolershipCreateNestedOneWithoutCourseInput
     ApplymentCourse?: applymentCourseCreateNestedManyWithoutCourseInput
   }
@@ -6745,6 +6764,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     schoolership_id: string
     ApplymentCourse?: applymentCourseUncheckedCreateNestedManyWithoutCourseInput
   }
@@ -6753,6 +6773,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     schoolership?: schoolershipUpdateOneRequiredWithoutCourseNestedInput
     ApplymentCourse?: applymentCourseUpdateManyWithoutCourseNestedInput
   }
@@ -6761,6 +6782,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     schoolership_id?: StringFieldUpdateOperationsInput | string
     ApplymentCourse?: applymentCourseUncheckedUpdateManyWithoutCourseNestedInput
   }
@@ -6769,6 +6791,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     schoolership_id: string
   }
 
@@ -6776,12 +6799,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type courseUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     schoolership_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7096,6 +7121,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     vacancies?: SortOrder
+    status?: SortOrder
     schoolership_id?: SortOrder
   }
 
@@ -7103,6 +7129,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     vacancies?: SortOrder
+    status?: SortOrder
     schoolership_id?: SortOrder
   }
 
@@ -7110,6 +7137,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     vacancies?: SortOrder
+    status?: SortOrder
     schoolership_id?: SortOrder
   }
 
@@ -7551,6 +7579,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     ApplymentCourse?: applymentCourseCreateNestedManyWithoutCourseInput
   }
 
@@ -7558,6 +7587,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     ApplymentCourse?: applymentCourseUncheckedCreateNestedManyWithoutCourseInput
   }
 
@@ -7594,6 +7624,7 @@ export namespace Prisma {
     id?: StringFilter<"course"> | string
     name?: StringFilter<"course"> | string
     vacancies?: StringFilter<"course"> | string
+    status?: StringFilter<"course"> | string
     schoolership_id?: StringFilter<"course"> | string
   }
 
@@ -7802,6 +7833,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     schoolership: schoolershipCreateNestedOneWithoutCourseInput
   }
 
@@ -7809,6 +7841,7 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
     schoolership_id: string
   }
 
@@ -7849,6 +7882,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     schoolership?: schoolershipUpdateOneRequiredWithoutCourseNestedInput
   }
 
@@ -7856,6 +7890,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     schoolership_id?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7908,12 +7943,14 @@ export namespace Prisma {
     id?: string
     name: string
     vacancies: string
+    status: string
   }
 
   export type courseUpdateWithoutSchoolershipInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     ApplymentCourse?: applymentCourseUpdateManyWithoutCourseNestedInput
   }
 
@@ -7921,6 +7958,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     ApplymentCourse?: applymentCourseUncheckedUpdateManyWithoutCourseNestedInput
   }
 
@@ -7928,6 +7966,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     vacancies?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type applymentCourseCreateManyCourseInput = {

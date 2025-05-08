@@ -143,6 +143,7 @@ exports.Prisma.CourseScalarFieldEnum = {
   id: 'id',
   name: 'name',
   vacancies: 'vacancies',
+  status: 'status',
   schoolership_id: 'schoolership_id'
 };
 
@@ -200,6 +201,7 @@ exports.Prisma.courseOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
   vacancies: 'vacancies',
+  status: 'status',
   schoolership_id: 'schoolership_id'
 };
 

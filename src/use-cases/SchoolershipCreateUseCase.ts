@@ -9,4 +9,4 @@ export class SchoolershipCreateUsecase {
         const response = await this.schoolershipcreaterepositoryCopy.createscoolership(data)
         return response
     }
-}
+} 

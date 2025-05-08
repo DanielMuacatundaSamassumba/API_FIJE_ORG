@@ -6,6 +6,6 @@ export class FindUserUseCase {
     async execute(email: string) {
         const response = await this.findUserrepositorycopy.findUser(email)
         return response
-    }
+    } 
 }
 

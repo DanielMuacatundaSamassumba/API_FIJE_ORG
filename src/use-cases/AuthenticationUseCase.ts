@@ -3,6 +3,7 @@ import { FindUserRepositoryCopy } from "../repositories/FindUserRepositoryCopy";
 import { InvalidCredentialError } from "./errors/InvalidCredentialError";
 import { DataUserAuthType } from "./types/DataUserAuth";
 import bcrypt from "bcrypt"
+
 export class Authentication {
     constructor(private finduser: FindUserRepositoryCopy) { }
 
@@ -17,7 +18,6 @@ export class Authentication {
         if (!passwordCheck){
             throw new InvalidCredentialError()
         }
-
         return response
 
     }

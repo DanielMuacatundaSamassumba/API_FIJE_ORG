@@ -36,6 +36,10 @@ import { CreateApplymentCourse } from "../../repositories/CreateApplymentCourseR
 import { CreateApplymentRepository } from "../../repositories/CreateApplymentRepository"
 import { FindNumberApplymentRepository } from "../../repositories/FindNumberApplymentRepository"
 import { CreateApplymentUseCase } from "../CreateApplymentUsecase"
+import { FindeApplicationRepository } from "../../repositories/FindeApplicationRepository"
+import { FindeApplicationUseCase } from "../FindeApplicationUseCase"
+import { CreatePaymentRepository } from "../../repositories/CreatePaymentRepository"
+import { FindPaymentRepository } from "../../repositories/FindPymentRepository"
 const listuserrepository = new ListUserRepository()
 const listuserusecase = new ListUsersUseCase(listuserrepository)
 const registerrepository = new RegisterRepository()
@@ -73,11 +77,17 @@ const deleteCourseUsecase = new DeleteCourseUseCase(deleteCourserepository)
 const createapplyment = new CreateApplymentRepository()
 const findNumberaplication = new FindNumberApplymentRepository()
 const createcourseaplication = new CreateApplymentCourse()
+const createpaymentRepository = new CreatePaymentRepository()
+const findPaymentbyNUmber = new FindPaymentRepository()
 const createaplicationusecase = new CreateApplymentUseCase(
     createapplyment,
     findNumberaplication,
-    createcourseaplication
+    createcourseaplication,
+    createpaymentRepository,
+    findPaymentbyNUmber
 )
+const findAplicationrepository = new FindeApplicationRepository()
+const findAplicationUsecase = new FindeApplicationUseCase(findAplicationrepository)
 export {
     listuserusecase,
     findUser,
@@ -98,5 +108,6 @@ export {
     findCourseusecase,
     Updatecouseusecase,
     deleteCourseUsecase,
-    createaplicationusecase
+    createaplicationusecase,
+    findAplicationUsecase
 }

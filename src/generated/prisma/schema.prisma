@@ -42,6 +42,7 @@ model course {
   id              String            @id @default(uuid())
   name            String
   vacancies       String
+  status          String
   schoolership    schoolership      @relation(fields: [schoolership_id], references: [id])
   schoolership_id String
   ApplymentCourse applymentCourse[]
@@ -49,10 +50,14 @@ model course {
 
 model applyment {
   id              String            @id @default(uuid())
-  number          String
+  number          String            @unique
   User            user              @relation(fields: [user_id], references: [id])
   user_id         String
+  status          String
   ApplymentCourse applymentCourse[]
+  payment         payment[]
+  crateAt         DateTime          @default(now())
+  updateAt        DateTime          @updatedAt
 }
 
 model applymentCourse {
@@ -60,5 +65,14 @@ model applymentCourse {
   Course       course    @relation(fields: [course_id], references: [id])
   course_id    String
   applyment    applyment @relation(fields: [applyment_id], references: [id])
+  applyment_id String
+}
+
+model payment {
+  id           String    @id @default(uuid())
+  number       String
+  price        String
+  status       String
+  aplication   applyment @relation(fields: [applyment_id], references: [id])
   applyment_id String
 }

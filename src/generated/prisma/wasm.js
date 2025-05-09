@@ -150,12 +150,23 @@ exports.Prisma.CourseScalarFieldEnum = {
 exports.Prisma.ApplymentScalarFieldEnum = {
   id: 'id',
   number: 'number',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  status: 'status',
+  crateAt: 'crateAt',
+  updateAt: 'updateAt'
 };
 
 exports.Prisma.ApplymentCourseScalarFieldEnum = {
   id: 'id',
   course_id: 'course_id',
+  applyment_id: 'applyment_id'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  number: 'number',
+  price: 'price',
+  status: 'status',
   applyment_id: 'applyment_id'
 };
 
@@ -208,12 +219,21 @@ exports.Prisma.courseOrderByRelevanceFieldEnum = {
 exports.Prisma.applymentOrderByRelevanceFieldEnum = {
   id: 'id',
   number: 'number',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  status: 'status'
 };
 
 exports.Prisma.applymentCourseOrderByRelevanceFieldEnum = {
   id: 'id',
   course_id: 'course_id',
+  applyment_id: 'applyment_id'
+};
+
+exports.Prisma.paymentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  number: 'number',
+  price: 'price',
+  status: 'status',
   applyment_id: 'applyment_id'
 };
 
@@ -223,7 +243,8 @@ exports.Prisma.ModelName = {
   schoolership: 'schoolership',
   course: 'course',
   applyment: 'applyment',
-  applymentCourse: 'applymentCourse'
+  applymentCourse: 'applymentCourse',
+  payment: 'payment'
 };
 
 /**

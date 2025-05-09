@@ -10,6 +10,7 @@ import { finduserByIdUsecase } from "../../../../use-cases/factories/FactoriesPa
 import { updateUseCase } from "../../../../use-cases/factories/FactoriesPatterns";
 import { user } from "../../../../generated/prisma";
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 import { MininalEightCharamts } from "../../../../use-cases/errors/MinimalEightCharamits";
 export const createUser = async (req: Request, res: Response) => {
    try {
@@ -77,10 +78,13 @@ export const AuthUser = async (req: Request, res: Response) => {
    try {
       const data = authschema.parse(req.body)
       const response = await AuthUseCase.execute(data)
-
+       const token = jwt.sign(response, "api_fije_org", { expiresIn:"1h"})
       return res.status(200).json({
          message: "Login realizado com sucesso",
-         data: response
+         data: {
+             data: response,
+             token:token
+         }
       })
    } catch (error) {
       if (error instanceof InvalidCredentialError) {
